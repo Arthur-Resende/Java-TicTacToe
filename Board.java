@@ -90,17 +90,24 @@ public class Board {
 
     }
 
-    protected boolean checkDiagonals() {
-        int diagonalAValue = tiles[0] + tiles[4] + tiles[8];
-        int diagonalBValue = tiles[2] + tiles[4] + tiles[6];
-        boolean xWin = diagonalAValue == xWinValue || diagonalBValue == xWinValue;
-        boolean oWin = diagonalAValue == oWinValue || diagonalBValue == oWinValue;
+    protected int checkDiagonalWinner() {
+        final int[] diagonals = {tiles[0] + tiles[4] + tiles[8], tiles[2] + tiles[4] + tiles[6]};
+        final int xWinValue = playerX * 3;
+        final int oWinValue = playerO * 3;
 
-        if (xWin || oWin) {
-            return true;
+        for (int i=0; i<diagonals.length; i++) {
+            int diagonalValue = diagonals[i];
+
+            if (diagonalValue == xWinValue) {
+                return playerX;
+            }
+
+            if (diagonalValue == oWinValue) {
+                return playerO;
+            }
         }
         
-        return false;
+        return 0;
 
     }
 
