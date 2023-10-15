@@ -69,18 +69,24 @@ public class Board {
 
     }
 
-    protected boolean checkColumns() {
-        int columnLength = 3;
+    protected int checkVerticalWinner() {
+        final int columnLength = 3;
+        final int xWinValue = playerX * 3;
+        final int oWinValue = playerO * 3;
 
         for (int i=0; i<columnLength; i++) {
             int columnValue = tiles[i] + tiles[i+3] + tiles[i+6];
 
-            if (columnValue == xWinValue || columnValue == oWinValue) {
-                return true;
+            if (columnValue == xWinValue) {
+                return playerX;
+            }
+
+            if (columnValue == oWinValue) {
+                return playerO;
             }
         }
 
-        return false;
+        return 0;
 
     }
 
