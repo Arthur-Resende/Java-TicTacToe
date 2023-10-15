@@ -48,18 +48,24 @@ public class Board {
         System.out.println();
     }
     
-    protected boolean checkRows() {
-        int rowLength = 3;
+    protected int checkHorizontalWinner() {
+        final int rowLength = 3;
+        final int xWinValue = playerX * 3;
+        final int oWinValue = playerO * 3;
 
         for (int i=0; i<rowLength; i++) {
             int rowValue = tiles[i] + tiles[i+1] + tiles[i+2];
 
-            if (rowValue == xWinValue || rowValue == oWinValue) {
-                return true;
+            if (rowValue == xWinValue) {
+                return playerX;
+            }
+
+            if (rowValue == oWinValue) {
+                return playerO;
             }
         }
         
-        return false;
+        return 0;
 
     }
 
