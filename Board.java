@@ -4,7 +4,6 @@ public class Board {
     final int playerX = 1;
     final int playerO = 4;
     
-
     /**
      * Add a player O's symbol to the board at the specified coordinates.
      * 
